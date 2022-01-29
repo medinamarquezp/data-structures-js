@@ -1,0 +1,15 @@
+{
+  "name": "data-structures-js",
+  "version": "1.0.0",
+  "description": "Playing with JS data structures",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": ["js", "data", "structures"],
+  "author": "Pedro Medina Márquez",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}
