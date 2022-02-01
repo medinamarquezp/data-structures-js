@@ -1,4 +1,4 @@
-const Brray = require("../Brray");
+const Brray = require("../src/Brray");
 
 describe("Brray class tests", () => {
     it("get key should be a valid number", () => {

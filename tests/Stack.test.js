@@ -1,4 +1,4 @@
-const Stack = require("../Stack");
+const Stack = require("../src/Stack");
 
 describe("Stack tests", () => {
     it("should initialize an empty stack", () => {

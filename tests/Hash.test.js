@@ -1,4 +1,4 @@
-const Hash = require("../Hash");
+const Hash = require("../src/Hash");
 
 describe("Hash table tests", () => {
     it("should validate Hash size parameter", () => {

@@ -1,4 +1,4 @@
-const Singly = require("../Singly");
+const Singly = require("../src/Singly");
 
 describe("Singly linked list tests", () => {
     it("should create a Singly linked list", () => {

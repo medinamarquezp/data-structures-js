@@ -1,4 +1,4 @@
-const Node = require('../Node');
+const Node = require('../src/Node');
 
 describe('Node tests', () => {
     it("should validate constructor value", () => {
