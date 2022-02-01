@@ -1,14 +1,7 @@
-class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
-}
+const Node = require('./Node');
 
 class Singly {
-    constructor(value = null) {
-        if (value === null)
-            throw "Singly constructor must recive a value parameter";
+    constructor(value) {
         this.head = new Node(value);
         this.tail = this.head;
         this.size = 1;

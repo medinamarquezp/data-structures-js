@@ -1,12 +1,6 @@
 const Singly = require("../Singly");
 
 describe("Singly linked list tests", () => {
-    it("should validate constructor value", () => {
-        expect(() => new Singly()).toThrow(
-            "Singly constructor must recive a value parameter"
-        );
-    });
-
     it("should create a Singly linked list", () => {
         const singly = new Singly("a");
         expect(singly.size).toBe(1);
