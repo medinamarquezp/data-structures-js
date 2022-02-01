@@ -26,6 +26,11 @@ describe("Stack tests", () => {
         expect(stack.peek().value).toBe("y");
     });
 
+    it('should return null on pop an empty stack', () => {
+        const stack = new Stack();
+        expect(stack.pop()).toBe(null);
+    });
+
     it("should pop an element in the stack", () => {
         const stack = new Stack();
         stack.push("x");
