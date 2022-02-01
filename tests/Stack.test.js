@@ -41,4 +41,11 @@ describe("Stack tests", () => {
         expect(stack.top.value).toBe("x");
         expect(stack.top.next).toBe(null);
     });
+
+    it('should returns stack values', () => {
+        const stack = new Stack();
+        stack.push("x");
+        stack.push("y");
+        expect(stack.values()).toEqual(["y", "x"]);
+    });
 });

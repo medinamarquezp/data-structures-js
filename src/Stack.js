@@ -36,6 +36,18 @@ class Stack {
     size() {
         return this.size;
     }
+
+    values() {
+        const values = [];
+        let node = this.top;
+        let iterator = 0;
+        while (iterator < this.size) {
+            values.push(node.value);
+            node = node.next;
+            iterator++;
+        }
+        return values;
+    }
 }
 
 module.exports = Stack;
