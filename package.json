@@ -4,12 +4,18 @@
   "description": "Playing with JS data structures",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
-  "keywords": ["js", "data", "structures"],
+  "keywords": [
+    "js",
+    "data",
+    "structures"
+  ],
   "author": "Pedro Medina Márquez",
   "license": "ISC",
   "devDependencies": {
+    "husky": "^7.0.4",
     "jest": "^27.4.7"
   }
 }
