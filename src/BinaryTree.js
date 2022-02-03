@@ -1,12 +1,12 @@
 class BinaryNode {
     constructor(value = null) {
-        this._validateValue(value);
+        BinaryNode._validateValue(value);
         this.left = null;
         this.right = null;
         this.value = value;
     }
 
-    _validateValue(value) {
+    static _validateValue(value) {
         if (value === null) throw "value parameter can not be null";
         if (!Number.isInteger(value))
             throw "value parameter must be a valid number";
@@ -41,6 +41,24 @@ class BinaryTree {
                     }
                     currentNode = currentNode.right;
                 }
+            }
+        }
+    }
+
+    find(value) {
+        BinaryNode._validateValue(value);
+        let currentNode = this.root;
+        if (value === currentNode.value) return currentNode;
+        while (true) {
+            if (value < currentNode.value) {
+                if (currentNode.left === null) return null;
+                currentNode = currentNode.left;
+                if (currentNode.value === value) return currentNode;
+            }
+            if (value > currentNode.value) {
+                if (currentNode.right === null) return null;
+                currentNode = currentNode.right;
+                if (currentNode.value === value) return currentNode;
             }
         }
     }
