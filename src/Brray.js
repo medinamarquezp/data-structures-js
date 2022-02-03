@@ -83,7 +83,7 @@ class Brray {
             throw "some parameter must be a valid function";
         for (const key in Object.keys(this._data)) {
             try {
-                if (func(this._data[key]) === true) return true;
+                if (func(this._data[key])) return true;
             } catch (error) {
                 console.error(error.message);
                 return false;
