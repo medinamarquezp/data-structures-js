@@ -52,4 +52,28 @@ describe("Binary tree tests", () => {
         expect(node5.value).toBe(5);
         expect(node2.value).toBe(2);
     });
+
+    it("should delete a leaf node", () => {
+        const bt = new BinaryTree();
+        bt.insert(5);
+        bt.insert(3);
+        bt.insert(9);
+        bt.insert(1);
+        bt.insert(6);
+        bt.insert(2);
+        bt.delete(9);
+        expect(bt.root.right.value).toBe(6);
+    });
+
+    it("should delete a node with one child node", () => {
+        const bt = new BinaryTree();
+        bt.insert(5);
+        bt.insert(3);
+        bt.insert(9);
+        bt.insert(1);
+        bt.insert(6);
+        bt.insert(2);
+        bt.delete(1);
+        expect(bt.root.left.left.value).toBe(2);
+    });
 });
