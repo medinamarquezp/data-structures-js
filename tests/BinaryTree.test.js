@@ -76,4 +76,30 @@ describe("Binary tree tests", () => {
         bt.delete(1);
         expect(bt.root.left.left.value).toBe(2);
     });
+
+    it("should delete a node with two children nodes (left)", () => {
+        const bt = new BinaryTree();
+        bt.insert(5);
+        bt.insert(3);
+        bt.insert(1);
+        bt.insert(4);
+        bt.insert(0);
+        bt.insert(2);
+        bt.insert(6);
+        bt.delete(3);
+        expect(bt.root.left.value).toBe(1);
+    });
+
+    it("should delete a node with two children nodes (right)", () => {
+        const bt = new BinaryTree();
+        bt.insert(5);
+        bt.insert(3);
+        bt.insert(1);
+        bt.insert(6);
+        bt.insert(8);
+        bt.insert(7);
+        bt.insert(1);
+        bt.delete(8);
+        expect(bt.root.right.right.value).toBe(7);
+    });
 });

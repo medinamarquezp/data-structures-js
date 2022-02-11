@@ -21,89 +21,88 @@ class BinaryTree {
 
     insert(value) {
         const newNode = new BinaryNode(value);
-        if (!this.root) {
+        if (this._isEmpty()) {
             this.root = newNode;
             return this;
-        } else {
-            let currentNode = this.root;
-            while (true) {
-                if (value < currentNode.value) {
-                    if (!currentNode.left) {
-                        currentNode.left = newNode;
-                        return this;
-                    }
-                    currentNode = currentNode.left;
+        }
+        let node = this.root;
+        while (node) {
+            if (value < node.value) {
+                if (node.left) {
+                    node = node.left;
+                } else {
+                    node.left = newNode;
+                    return node;
                 }
-                if (value > currentNode.value) {
-                    if (!currentNode.right) {
-                        currentNode.right = newNode;
-                        return this;
-                    }
-                    currentNode = currentNode.right;
+            } else {
+                if (node.right) {
+                    node = node.right;
+                } else {
+                    node.right = newNode;
+                    return node;
                 }
             }
         }
     }
 
     find(value) {
-        const boundaries = this._getBoundaries(value);
-        return !boundaries ? null : boundaries.currentNode;
+        if (this._isEmpty()) return null;
+        let node = this.root;
+        if (node.value === value) return node;
+        while (node) {
+            if (node.value === value) break;
+            if (value > node.value) {
+                node = node.right;
+            } else if (value < node.value) {
+                node = node.left;
+            }
+        }
+        return node;
     }
 
-    delete(value) {
-        const boundaries = this._getBoundaries(value);
-        if (!boundaries) return null;
-        const { prevNode, currentNode } = boundaries;
-
-        // Delete leaf node
-        if (this._isLeafNode(currentNode)) {
-            this._setToParent(prevNode, prevNode);
+    findMin(node = this.root) {
+        if (!this._isEmpty()) {
+            while (node.left) {
+                node = node.left;
+            }
+            return node;
         }
-        // Delete node with left child
-        if (currentNode.left && !currentNode.right) {
-            this._setToParent(prevNode, prevNode, currentNode.left);
-        }
-        // Delete node with right child
-        if (!currentNode.left && currentNode.right) {
-            this._setToParent(prevNode, currentNode, currentNode.right);
-        }
-        // TODO: Delete node with two children
     }
 
-    _setToParent(prevNode, currentNode, value = null) {
-        if (prevNode.value > currentNode.value) {
-            prevNode.left = value;
-            return this;
+    delete(value, node = this.root) {
+        if (!node) return null;
+        if (node.value === value) {
+            // No childs
+            if (this._isLeafNode(node)) return null;
+            // Right child
+            if (!node.left) return node.right;
+            // Left child
+            if (!node.righ) return node.left;
+            // Has two children
+            // Look for minor child
+            const minorChild = this.findMin(node.right);
+            // Replace deleted node
+            node.value = minorChild.value;
+            // Keep iterating to replace changed branch
+            node.right = this.delete(minorChild.value, node.right);
+            return node;
         }
-        prevNode.right = value;
-        return this;
+        if (node.value < value) {
+            node.right = this.delete(value, node.right);
+            return node;
+        }
+        if (node.value > value) {
+            node.left = this.delete(value, node.left);
+            return node;
+        }
     }
 
     _isLeafNode(node) {
         return !node.left && !node.right;
     }
 
-    _getBoundaries(value) {
-        BinaryNode._validateValue(value);
-        let prevNode = null;
-        let currentNode = this.root;
-        if (value === currentNode.value) return { prevNode, currentNode };
-        while (true) {
-            if (value < currentNode.value) {
-                if (!currentNode.left) return null;
-                prevNode = currentNode;
-                currentNode = currentNode.left;
-                if (currentNode.value === value)
-                    return { prevNode, currentNode };
-            }
-            if (value > currentNode.value) {
-                if (!currentNode.right) return null;
-                prevNode = currentNode;
-                currentNode = currentNode.right;
-                if (currentNode.value === value)
-                    return { prevNode, currentNode };
-            }
-        }
+    _isEmpty() {
+        return this.root === null;
     }
 }
 
