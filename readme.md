@@ -6,7 +6,7 @@ Playing with data structures and JS
 - [x] Singly linked list
 - [x] Stack LIFO
 - [x] Queue FIFO
-- [ ] Binary trees
+- [x] Binary trees
 - [ ] Graphs
 
 All code can be tested by using command:
