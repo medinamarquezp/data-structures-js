@@ -7,7 +7,7 @@ Playing with data structures and JS
 - [x] Stack LIFO
 - [x] Queue FIFO
 - [x] Binary trees
-- [ ] Graphs
+- [x] Graphs
 
 All code can be tested by using command:
 ```npm test```
